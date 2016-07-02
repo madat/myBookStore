@@ -11,11 +11,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bookstore.app.model.bo.Book;
+import com.bookstore.app.model.bo.HomePageInfo;
 import com.bookstore.app.model.dao.BookService;
 
 /**
@@ -28,6 +30,19 @@ public class HomeController {
 	
 	@Autowired
 	BookService bookService;
+	
+	/**
+	 * we can bind a object as ModelAttribute, making it available for any requests.
+	 * This will be called before serving any requestmapping and bind it to model  object explicitly.
+	 * 
+	 * @return
+	 */
+	@ModelAttribute("homePage")
+	public HomePageInfo getModelAttributeOfHomePageInfo(){
+		HomePageInfo homePage=new HomePageInfo();
+		homePage.setDiscountInfo("Diwali Discount on all Books");
+		return homePage;
+	}
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

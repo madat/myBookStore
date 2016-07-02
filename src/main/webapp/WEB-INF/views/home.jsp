@@ -31,7 +31,10 @@
 		
 		
 </div>	
-		
+	
+</div>
+<div class="container">
+    ${homePage.discountInfo}
 </div>
 </body>
 </html>
